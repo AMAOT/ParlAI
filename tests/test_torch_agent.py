@@ -537,7 +537,6 @@ class TestTorchAgent(unittest.TestCase):
         out = agent.get_dialog_history(obs.copy())
         self.assertEqual(out['text'], 'I am Groot.')
         self.assertEqual(out['labels'][0], 'I am Groot?')
-        self.assertTrue('text_vec' in out, 'Text should be vectorized.')
 
         # second exchange, no reply
         out = agent.get_dialog_history(obs.copy())
@@ -686,6 +685,7 @@ class TestTorchAgent(unittest.TestCase):
         # episode was done so shouldn't remember history
         out = agent.observe(obs.copy())
         self.assertEqual(out['text'], 'I\'ll be back.')
+        self.assertTrue('text_vec' in out, 'Text should be vectorized.')
 
         # now try with episode not done
         obs['episode_done'] = False

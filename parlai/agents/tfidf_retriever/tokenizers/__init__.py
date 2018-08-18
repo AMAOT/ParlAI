@@ -7,6 +7,11 @@
 
 import os
 
+from .corenlp_tokenizer import CoreNLPTokenizer
+from .regexp_tokenizer import RegexpTokenizer
+from .simple_tokenizer import SimpleTokenizer
+
+
 DEFAULTS = {
     'corenlp_classpath': os.getenv('CLASSPATH')
 }
@@ -16,10 +21,6 @@ def set_default(key, value):
     global DEFAULTS
     DEFAULTS[key] = value
 
-
-from .corenlp_tokenizer import CoreNLPTokenizer
-from .regexp_tokenizer import RegexpTokenizer
-from .simple_tokenizer import SimpleTokenizer
 
 # Spacy is optional
 try:
